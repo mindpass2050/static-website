@@ -24,7 +24,6 @@
 body {
   font-family: 'WeblySleek UI', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
-  color: #4c5667;
   background: #fff;
   font-size: 14px;
   line-height: 22px;
@@ -108,6 +107,7 @@ textarea {
   top: 0px;
 }
 .bg-one {
+  height: 100vh;
   background: url("../images/chain.jpg");
   background-size: cover;
   position: relative;
@@ -137,6 +137,7 @@ textarea {
 .navbar-custom {
   padding: 10px 0px;
   margin-bottom: 0px;
+  background-color: transparent;
 }
 .navbar-custom .navbar-nav li a{
   color: #ccc;
@@ -164,7 +165,6 @@ textarea {
   background-color: transparent;
   border-color: #337ab7;
 }
-
 
 /*======= Dropdown ======= */
 .dropdown-menu {
@@ -305,6 +305,15 @@ textarea {
   padding-left:0;
 }
 
+#logoImg {
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 10vw;
+  
+  
+}
+
+
 
 /*======= Services =======*/
 .service-item {
@@ -356,84 +365,6 @@ textarea {
 }
 
 
-/*======= Pricing =======*/
-.pricing-item{
-  margin: 0 0 30px;
-  position: relative;
-  text-align: center;
-}
-.pricing-item-inner{
-  border: 2px solid rgba(151, 160, 175, 0.2);
-  vertical-align: middle;
-  border-radius: 7px;
-  -webkit-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
-  -moz-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
-  -o-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
-  -ms-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
-  transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
-}
-.pricing-item-inner:hover{
-  border-color: #97a0af;
-}
-.main .pricing-item-inner{
-  border-color: #97a0af;
-}
-.pricing-wrap{
-  position: relative;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 30px 20px;
-  text-align: center;
-  overflow: hidden;
-}
-.pricing-icon{
-    padding-top: 10px;
-  padding-bottom: 5px;
-  position: relative;
-  font-size: 32px;
-  z-index: 1;
-}
-.pricing-title{
-  position: relative;
-  margin-bottom: 40px;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  z-index: 1;
-}
-.pr-list{
-  margin: 0 -20px 30px;
-  padding: 0;
-  color: #97a0af;
-  font-size: 12px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-.pr-list li{
-  padding: 12px 20px;
-  list-style: none;
-}
-.pricing-num{
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1;
-}
-.pricing-num sup{
-  font-size: 18px;
-  font-weight: 400;
-  position: relative;
-  top: -20px;
-  left: -3px;
-  margin-left: -7px;
-}
-.pr-per{
-  color: #97a0af;
-  font-size: 12px;
-}
-.pr-button {
-  margin-top: 30px;
-}
 
 /*======= Testimonials =======*/
 .clientblock {
@@ -524,38 +455,6 @@ textarea {
   color: #fa4a86;
   border: 1px solid #fa4a86;
 }
-
-
-/*======= Contact ======*/
-.form-main {
-  padding-top: 30px;
-}
-.form-control {
-  box-shadow: none !important;
-  outline: none !important;
-  border: 2px solid #97a0af;
-  height: 38px;
-}
-.form-control:focus,.form-control:hover {
-  border-color: #fa4a86;
-}
-.error {
-  margin: 8px 0px;
-  display: none;
-  color: red;
-}
-#ajaxsuccess {
-  font-size: 16px;
-  width: 100%;
-  display: none;
-  clear: both;
-  margin: 8px 0px;
-}
-.con_sub_text {
-  margin: 20px 0px;
-  font-size: 15px;
-}
-
 
 /**
 * Simple fade transition for Magnific popup
@@ -655,9 +554,6 @@ textarea {
   .dropdown-menu > li > a:hover {
     background-color: transparent;
     color: #ffffff;
-  }
-  .navbar-custom {
-    background-color: #333b4d;
   }
 }
 @media (max-width: 768px) {
