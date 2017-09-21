@@ -20,7 +20,6 @@
 
     <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
     <link rel="stylesheet" href="css/academicons.min.css"/>
-    <link rel="stylesheet" href="css/flipclock.css">
     <link href="css/style.css" rel="stylesheet">
     
   </head>
@@ -102,7 +101,7 @@
               <div class="progress">
                   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11.11"
                   aria-valuemin="0" aria-valuemax="100" style="width:11.11%">
-                    11.11% of Min
+                    11.11% of Minimum
                   </div>
                 </div>
                   <div class="custom-voffset-40"></div>
@@ -128,6 +127,7 @@
     </div>
     <!-- Modal -->
   </section>
+
   <div id="notyet" class="modal fade" role="dialog">
       <div class="modal-dialog">
     
@@ -179,12 +179,12 @@
         <h4>Disclaimer:</h4>        
         <p>
             Success in the presale means we will use the contributions to organize an extended crowdsale in the Q1 of '18. Therefore, they should be considered non refundable. Distribution of the EEG token will happen only after a successful main crowdsale. In order to organize a compliant and transparent crowdsale we will employ an external advisory firm, proficient in cryptocurrency regulations and escrow practices. <br />            
-            Please note that we <strong>do not accept contributions from USA or Chinese nationals</strong>. Furthermore each participant needs to make sure he is compliant with his/her own jurisdiction's laws.            
+            In case we don't reach the minimum required, we will discuss with the community on how to proceed. All contributions from participants that chose to get a refund will be returned to the original addresses.<br/>
+            Please note that we <strong>do not accept contributions from USA or Chinese nationals</strong>. Furthermore each participant needs to make sure he/she is compliant with his/her own jurisdiction's laws.            
         </p>
       </div>
     </div>
-      </div>
-    </div>
+
   </section>
   <!-- FOOTER -->
   <footer class="section bg-gray footer">
@@ -231,6 +231,8 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bluebird.min.js"></script>
+    <script src="js/fetch.js"></script>
 
 <script>
 
@@ -268,13 +270,14 @@ $(document).on( 'scroll', function(){
   }
 });
 
+var deadline = new Date(2017,08,30,17);
+var totalBalance=0;
+
 $(document).ready(function() {
 
   $('.scroll-top-wrapper').on('click', scrollToTop);
   $('.scroll-top-wrapper').removeClass('hidden');
-
-  var deadline = new Date(2017,08,30,17);
-  
+   
   function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
   var seconds = Math.floor((t / 1000) % 60);
@@ -317,8 +320,30 @@ function initializeClock(id, endtime) {
 $('#clockdiv').removeClass('hidden');
 initializeClock('clockdiv', deadline);
 
+//check balances
+
+//btc
+var btcAddress = '3PL2VDh9ph6Yzjfb8ZK4yC1dhtpyhyPfgW';
+var btcPromise = new Promise(function(resolve,reject) {
+  fetch('https://blockchain.info/balance?cors=true&active='+btcAddress)
+  .then(function(response) {  
+    return response.json();    
+  })
+  .then(function(data) {
+      resolve(data[btcAddress].final_balance);
+  });
 });
 
+//ethereum
+
+//neo
+
+//zcash
+
+//run them all and update final balance
+
+
+});
 
 </script>
 
