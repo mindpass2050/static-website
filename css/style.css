@@ -254,6 +254,17 @@ textarea {
   width: 100%;
 }
 
+
+.fullpage {
+  height: 100vh;
+  background: url("../images/chain.jpg");
+  background-size: cover;
+  position: relative;
+  background-position: fixed;
+  color: #ffffff !important;
+  top: 0px;
+}
+
 /*======= Brand =======*/
 .clients {
   padding-top: 60px;
@@ -539,4 +550,73 @@ textarea {
   .feature-detail {
     padding: 0px 0px 50px 30px !important;
   }
+
+  .flip-clock-wrapper ul { height: 50px; line-height: 50px; }
+	.flip-clock-wrapper ul li a div.up:after { top: 24px; }
+	.flip-clock-divider { height: 50px; }
+	.flip-clock-dot { height: 6px; width: 6px; left: 7px;}
+	.flip-clock-dot.top { top: 17px; }
+	.flip-clock-dot.bottom { bottom: 8px; }
+	
+	.flip-clock-divider .flip-clock-label { font-size: 16px; }
+	.flip-clock-divider.hours .flip-clock-label { right: -66px; }
+	.flip-clock-divider.minutes .flip-clock-label { right: -78px; }
+	.flip-clock-divider.seconds .flip-clock-label { right: -78px; }
+	
+	.flip-clock-wrapper ul { width: 37px; }
+  .flip-clock-wrapper ul li a div div.inn { font-size: 30px; }
+  
+}
+
+.table td {
+  border: none !important;
+}
+
+span.crypto-amount {
+  font-size: 20px
+}
+
+.crypto-table td {
+  vertical-align: middle !important
+}
+
+.crypto-table img {
+  max-height: 5vh
+}
+
+.progress-bar-success {
+  background-color: #80cbc4
+}
+
+#mobileClock {
+  font-size: 2vh;
+  color: #80cbc4;
+}
+
+#clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 3vh;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #80cbc4;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: #26A69A;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 2vh;
 }

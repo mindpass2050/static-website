@@ -21,29 +21,46 @@
     <link rel="stylesheet" type="text/css" href="css/ionicons.min.css">
     <link rel="stylesheet" href="css/academicons.min.css"/>
     <link rel="stylesheet" href="css/flipclock.css">
-    <link href="css/presale_style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     
   </head>
 
 <body>
 
   <div class="navbar navbar-custom navbar-abs" role="navigation">
-      <div class="container">
-        <!-- Navbar-header -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <i class="ion-navicon"></i>
-          </button>
-          <!-- LOGO -->
-          <a class="navbar-brand logo" href="https://www.mindpass.io">            
-              <span>MindPass</span>
-          </a>
-        </div>
-        <!-- end navbar-header -->
+    <div class="container">
+      <!-- Navbar-header -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <i class="ion-navicon"></i>
+        </button>
+        <!-- LOGO -->
+        <a class="navbar-brand logo" href="index.html">            
+            <span>MindPass</span>
+        </a>
       </div>
-      <!-- end container -->
+      <!-- end navbar-header -->
+
+      <!-- menu -->
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="https://github.com/mindpass2050/whitepaper/blob/master/whitepaper.pdf">Whitepaper</a>
+          </li>
+          <li>
+            <a href="https://medium.com/@mindpass2050">Blog</a>
+          </li>
+           <li>
+            <a href="https://bitcointalk.org/index.php?topic=2056865">Announcement</a>
+          </li>
+        </ul>
+      </div>
+      <!--/Menu -->
     </div>
-    <!-- End navbar -->
+    <!-- end container -->
+  </div>
+  <!-- End navbar -->
+
 
 
   <section class="fullpage" id="counter">
@@ -57,8 +74,25 @@
         <div class="col-sm-12 text-center">
           <h1>Pre-sale Countdown</h1>
           <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div class="clock"></div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+              <div class="hidden" id="clockdiv">
+                <div>
+                  <span class="days"></span>
+                  <div class="smalltext">Days</div>
+                </div>
+                <div>
+                  <span class="hours"></span>
+                  <div class="smalltext">Hours</div>
+                </div>
+                <div>
+                  <span class="minutes"></span>
+                  <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                  <span class="seconds"></span>
+                  <div class="smalltext">Seconds</div>
+                </div>
+              </div>              
             </div>
         </div>
         <div class="custom-voffset-40"></div>
@@ -66,21 +100,21 @@
             <div class="col-sm-8 col-sm-offset-2">
               <h3>Raised:</h3>
               <div class="progress">
-                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="9"
-                  aria-valuemin="0" aria-valuemax="100" style="width:9%">
-                    9% of Min
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11.11"
+                  aria-valuemin="0" aria-valuemax="100" style="width:11.11%">
+                    11.11% of Min
                   </div>
                 </div>
                   <div class="custom-voffset-40"></div>
                   <div class="table-responsive">
                       <table class="table crypto-table">
                         <tr>
-                          <td><span class="crypto-amount" id="btcRaised">0</span></td>
+                          <td><span class="crypto-amount" id="btcRaised">10</span></td>
                           <td><img class="img-responsive" src="images/bitcoin.png"></td>
                           <td><span class="crypto-amount" id="ethRaised">0</span></td>
                           <td><img class="img-responsive"  src="images/ethereum.png"></td>
                           <td><span class="crypto-amount" id="neoRaised">0</span></td>
-                          <td><img class="img-responsive" src="images/neo.jpg"></td>
+                          <td><img class="img-responsive" src="images/neo.svg"></td>
                           <td><span class="crypto-amount" id="zcashRaised">0</span></td>
                           <td><img class="img-responsive" src="images/zcash.png"></td>
         
@@ -195,9 +229,8 @@
   <!-- END FOOTER -->
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/flipclock.min.js"></script>
 
 <script>
 
@@ -240,25 +273,52 @@ $(document).ready(function() {
   $('.scroll-top-wrapper').on('click', scrollToTop);
   $('.scroll-top-wrapper').removeClass('hidden');
 
-  var clock;
-            // Grab the current date
-          var currentDate = new Date();
+  var deadline = new Date(2017,08,30,17);
   
-          // Set some date in the future. In this case, it's always Jan 1
-          var futureDate  = new Date(2017,8,30,17);
-  
-          // Calculate the difference in seconds between the future and current date
-          var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-  
-          // Instantiate a coutdown FlipClock
-          clock = $('.clock').FlipClock(diff, {
-            clockFace: 'DailyCounter',
-            countdown: true
-          });
+  function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+$('#clockdiv').removeClass('hidden');
+initializeClock('clockdiv', deadline);
 
 });
 
-//end of scroller
 
 </script>
 
